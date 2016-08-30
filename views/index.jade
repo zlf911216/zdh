@@ -1,0 +1,74 @@
+doctype	hyml
+html
+	head
+		meta(charset="UTF-8")
+		title #{title}
+		link(rel="stylesheet",type="text/css",href="/jt/css/index.css")
+	body
+		input(type="hidden") 
+		div.all_page
+			div.message
+				div.phone
+					select#choose_phone
+						option(value="iphone6") iphone6
+						option(value="iphone4") iphone4
+						option(value="自定义") 自定义
+				div.my_width
+					input(placeholder="宽度") 
+				div.my_height
+					input(placeholder="高度")
+				div.make_true
+					button 确认
+				div.moduel_list
+					div.moduel_list_top
+						span 组件列表
+					ul.moduel_num
+				div.add_img 
+					p.
+						添加
+						图片
+				div.add_backImg 
+					p.
+						添加
+						背景	
+				div.introduced
+					p.
+						发布		
+				div.phone_message_box
+					div.phone_message
+			div.right_window
+				ul.window_kind
+					li.kind_img 我的图片库
+					li.kind_moduel 组件属性
+				div.img_lib
+					div.myImg.clearfix
+						- for(var i=0;i<Img.length;i++){
+							div.imgBox
+								img(src=Img[i])
+						-	}			
+					div.upload_img.clearfix 
+						form(action="/index/upload",enctype="multipart/form-data",method="post",target="upload_userImg")
+							input#file(type="file",name="upload",multiple="multiple")
+							input#upload_img(type="submit",value="上传")
+							iframe(name="upload_userImg",id="upload_userImg",style="display:none")
+				div.moduel_attr
+					div.mymode
+						ul
+							li
+								span.this_width 宽  度
+								input#this_width(data-kind="1",type="tel")
+							li
+								span.this_left 左边距
+								input#this_left(data-kind="2",type="tel")
+							li
+								select.choose_abs
+									option 上边距
+									option 下边距
+								input#choose_abs(data-kind="3",type="tel")
+							li
+								span.this_index 层 级
+								input#this_index(data-kind="4",type="tel")
+		script(type="text/javascript",src="/jt/js/jq.min.js")
+		script(type="text/javascript",src="/jt/js/choose_phone.js")
+		script(type="text/javascript",src="/jt/js/control_moduel.js")
+		script(type="text/javascript",src="/jt/js/build_moduel.js")
